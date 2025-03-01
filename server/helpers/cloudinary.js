@@ -20,6 +20,13 @@ const uploadMediaToCloudinary = async (filePath) => {
   }
 };
 
-
+const deleteMediaFromCloudinary = async (publicId) => {
+  try {
+    await cloudinary.uploader.destroy(publicId);
+  } catch (error) {
+    console.log(error);
+    throw new Error("failed to delete assest from cloudinary");
+  }
+};
 
 module.exports = { uploadMediaToCloudinary, deleteMediaFromCloudinary };
